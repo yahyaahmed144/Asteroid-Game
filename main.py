@@ -45,6 +45,14 @@ def main():
                 print("Game over!")
                 pygame.quit()
                 raise SystemExit
+            
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    asteroid.split()  # remove asteroid from all groups
+                    shot.kill()      # remove shot from all groups
+                    break  
+
 
 
         screen.fill((0,0,0))
